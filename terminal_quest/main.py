@@ -1,31 +1,49 @@
-import random
-
-def intro():
-    print("Welcome, adventurer! You wake up in a dark forest with no memory.")
-    print("Do you want to explore the forest or head towards the mountains?")
+def start_game():
+    print("🧙 Welcome, adventurer!")
+    print("You must choose your path: the dark forest or the icy mountains.")
     choice = input("Type 'forest' or 'mountains': ").strip().lower()
-    if choice == "forest":
-        forest()
-    elif choice == "mountains":
-        mountains()
-    else:
-        print("Invalid choice. Try again.")
-        intro()
 
-def forest():
-    print("\nYou walk into the forest and find a mysterious glowing sword.")
-    has_sword = True
-    print("Suddenly, a wild beast appears!")
-    fight = input("Do you want to 'fight' or 'run'? " ).stripe().lower()
-    if fight == "fight":
-        if has_sword:
-            print("You slay the beast with the glowing sword!")
-            treasure_cave()
-        else:
-            print("You try to fight with your fists but the peast overpowers you. ")
-            game_over()
+    if choice == "forest":
+        forest_path()
+    elif choice == "mountains":
+        mountain_path()
     else:
-        print("You run away and get lost in the forest.")
+        print("You hesitated and were eaten by a wild goose. 🪿")
         game_over()
-        def mountains():
-            print("\nYoy climb the mountain and find a wise old man")
+
+def forest_path():
+    print("\n🌲 You enter the forest and hear rustling...")
+    choice = input("Do you 'investigate' the sound or 'run'? ").strip().lower()
+
+    if choice == "investigate":
+        print("You find a wounded dragon who becomes your ally! 🐉")
+        victory()
+    elif choice == "run":
+        print("You trip over a root and a squirrel steals your sword. 🐿️")
+        game_over()
+    else:
+        print("Lost and confused, you vanish into the woods.")
+        game_over()
+def mountain_path():
+        print("\n You climb the mountains and face a blizzard. ")
+        choice = input("Do uou 'build shelter' or 'press on'?").strip().lower()
+
+        if choice == "build shelter":
+            print("You survive the night and find a magical artifact! ")
+            victory()
+        elif choice == "press on":
+            print("The cold overwhelms you, your journey end here. ")
+            game_over()
+        else:
+            print("You are buried in snow, never to be found.")
+            game_over()
+def victory():
+            print("\n Congratulations! You completed your quest successfully!")
+def game_over():
+        print("\n Game over, Try again?")
+        choice = input("Type 'yes' to restart or anything else to quit: ").strip().lower()
+        if choice == "yes":
+            start_game()
+        else:
+            print("Thanks for playing")
+start_game()
